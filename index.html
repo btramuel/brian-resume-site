@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brian Tramuel - Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (optional) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DGMJ1HYJZY');
+  </script>
+</head>
+<body>
+  <button class="toggle-theme" onclick="toggleTheme()">🌓 Theme</button>
+
+  <nav class="navbar">
+    <div class="container">
+      <h1>Brian Tramuel</h1>
+      <ul class="nav-links">
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h2>IT Systems Engineer | Developer | Student</h2>
+        <p>Charlotte, NC | brian.dolphus@tramuel.com</p>
+        <a href="assets/Brian Tramuel's Resume.pdf" class="btn" download>Download Resume</a>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/profile.jpg" alt="Photo of Brian Tramuel" />
+      </div>
+    </div>
+  </header>
+
+  <section id="education" class="section">
+    <div class="container">
+      <h2>Education</h2>
+      <ul>
+        <li class="card"><strong>University of North Carolina at Charlotte</strong> – B.A. in Computer Science, IT Concentration, Statistics Minor (Aug 2024–May 2026)</li>
+        <li class="card"><strong>Winston Salem State University</strong> – Information Technology Major, Business Minor (Aug 2022–May 2024)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills" class="section light">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="card">
+        <p><strong>Software:</strong> Office 365, Linux, SharePoint, SAS, VMware, Azure, GitHub</p>
+        <p><strong>Languages:</strong> Java, VB.Net, SQL, MIPS Assembly</p>
+        <p><strong>Soft Skills:</strong> Teamwork, Problem Solving, Communication</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="card">
+        <p><strong>Mecklenburg County – IT Systems Engineer Intern</strong><br> Managed cloud servers using Azure & VMware. Assisted with backup solutions and print services.</p>
+        <p><strong>Select Home Tech – Technician</strong><br> Installed and maintained network systems, followed safety protocols.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section light">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="filter-buttons">
+        <button onclick="filterProjects('all')">All</button>
+        <button onclick="filterProjects('java')">Java</button>
+        <button onclick="filterProjects('cloud')">Cloud</button>
+        <button onclick="filterProjects('sql')">SQL</button>
+      </div>
+      <div class="projects-grid">
+        <div class="card java">Library System (Java)</div>
+        <div class="card cloud">Server Migration (Azure)</div>
+        <div class="card sas">Student Stress Analysis (SAS)</div>
+        <div class="card sql">Valet System (SQL)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <form action="https://formspree.io/f/moqgjjpy" method="POST" class="card">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Brian Tramuel. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach(card => observer.observe(card));
+
+    function filterProjects(category) {
+      const cards = document.querySelectorAll(".projects-grid .card");
+      cards.forEach(card => {
+        card.style.display = category === 'all' || card.classList.contains(category) ? 'block' : 'none';
+      });
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+  </script>
+</body>
+</html>
