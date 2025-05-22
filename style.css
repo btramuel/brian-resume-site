@@ -31,6 +31,11 @@ body {
   padding: 2rem;
 }
 .card {
+  .card:hover {
+  transform: scale(1.02);
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
   background: white;
   padding: 1rem;
   border-radius: 8px;
